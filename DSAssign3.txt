@@ -1,0 +1,80 @@
+import os
+
+arr1 = [
+    [0, 0, 45, 0, 90],
+    [0, 67, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 89, 0],
+    [36, 0, 0, 0, 0],
+    [34,56,0,0,0],
+    [0,0,0,78,98]
+]
+arr2 = []
+for i in range(0, len(arr1)):
+    for j in range(0, len(arr1[0])):
+        if arr1[i][j] != 0:
+            arr2.append([i, j, arr1[i][j]])
+
+def print_arr2(arr2) :
+    for i in range(0, len(arr2)):
+        print(arr2[i][0], " ", arr2[i][1], " ", arr2[i][2])
+
+
+
+def highest_grade(arr2) :
+    x = []
+    for i in range(0, len(arr2)):
+        if arr2[i][2] > arr2[0][2]:
+            x = arr2[i][2]
+    print("The highest marks  student has is : ", x)
+
+
+
+
+
+def avg_grade_per_subj(arr2) :
+    p = int(input("Enter name(no.) of subject : "))
+    n = 0
+    z = 0
+    for i in range(0, len(arr2)):
+        if arr2[i][1] == p:
+            n += arr2[i][2]
+            z = z + 1
+
+    print("THe average grade of subject",p,"is : ",(n/z))
+
+
+
+def sub_with_high(arr2) :
+    x = []
+    m=0
+    for i in range(0, len(arr2)):
+        if arr2[i][2] > arr2[0][2]:
+            x = arr2[i][2]
+            m=i
+    print("The subjct with highest grade is  : ", arr2[m][1], "and the marks are : ",x)
+
+
+def print1() :
+    print("1 : marks of all students with their subjects and name")
+    print("2 : The highest grade")
+    print("3 : average grade per Subjects")
+    print("4 : Subjects with highest Grade")
+    print("5 : Exit")
+stop = 0
+while (stop == 0) :
+    print1()
+    ch = int(input("enter your choice : "))
+    match(ch) :
+        case 1 :
+            print_arr2(arr2)
+        case 2 :
+            highest_grade(arr2)
+        case 3 :
+            avg_grade_per_subj(arr2)
+        case 4 :
+            sub_with_high(arr2)
+        case 5 :
+            stop = 1
+        case _ :
+            print("Enter valid input")
